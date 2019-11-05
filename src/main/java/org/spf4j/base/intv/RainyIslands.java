@@ -82,6 +82,9 @@ public class RainyIslands {
         if (v > rh) {
           rh = v;
         }
+        if (v >= max) {
+          break;
+        }
       }
       if (rh <= h) {
         continue;
@@ -90,7 +93,6 @@ public class RainyIslands {
     }
     return result;
   }
-
 
 
 }
