@@ -18,19 +18,23 @@ package org.spf4j.base.intv;
 import org.junit.Assert;
 import org.junit.Test;
 
-
 /**
  *
  * @author Zoltan Farkas
  */
-public class ScratchTest {
-
+public class MwsSlowTest {
 
   @Test
-  public void testNumberToWord() {
-    System.out.println(Scratch.numberToWords(200));
+  public void testMinWindow() {
+    String minWindow = MwsSlow.minWindow("ADOBECODEBANC", "ABC");
+    System.out.println(minWindow);
+    Assert.assertEquals("BANC", minWindow);
   }
-
-
+  @Test
+  public void testMinWindow2() {
+    String minWindow = MwsSlow.minWindow("a", "aa");
+    System.out.println(minWindow);
+    Assert.assertEquals("", minWindow);
+  }
 
 }
