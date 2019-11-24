@@ -25,11 +25,17 @@
   <parent>
     <groupId>org.spf4j</groupId>
     <artifactId>spf4j</artifactId>
-    <version>8.4.5-SNAPSHOT</version>
+    <version>8.6.27-SNAPSHOT</version>
   </parent>
   <name>${project.artifactId}</name>
     
   <dependencies>
+    <dependency>
+      <groupId>org.spf4j</groupId>
+      <artifactId>spf4j-slf4j-test</artifactId>
+      <scope>test</scope>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
       <groupId>io.opentracing</groupId>
       <artifactId>opentracing-util</artifactId>
@@ -48,12 +54,6 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>net.java.dev.jna</groupId>
       <artifactId>jna</artifactId>
       <version>4.1.0</version>
@@ -69,22 +69,9 @@
       <version>1.4.192</version>
       <scope>test</scope>
     </dependency>
-
-    <dependency>
-      <groupId>org.spf4j</groupId>
-      <artifactId>spf4j-slf4j-test</artifactId>
-      <scope>test</scope>
-      <version>${project.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>
-      <version>1.8.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro-compiler</artifactId>
-      <version>1.8.1</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.janino</groupId>
@@ -101,6 +88,12 @@
       <groupId>com.twitter</groupId>
       <artifactId>finagle-core_2.12</artifactId>
       <version>18.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
