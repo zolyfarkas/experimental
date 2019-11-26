@@ -28,7 +28,8 @@ public class ScratchTest {
 
   @Test
   public void testNumberToWord() {
-    System.out.println(Scratch.numberToWords(200));
+    System.out.println(
+            Scratch.numberToWords(2067452370));
   }
 
 
