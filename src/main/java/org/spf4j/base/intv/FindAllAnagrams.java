@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * https://leetcode.com/problems/find-all-anagrams-in-a-string/
  * @author Zoltan Farkas
  */
 public class FindAllAnagrams {
@@ -45,25 +45,22 @@ public class FindAllAnagrams {
 
     private static void incSort(char[] array, char remove, char add) {
       int i = 0;
-      while (array[i] != remove) {
+      char c;
+      while ((c = array[i]) != remove) {
+        if (c > add) {
+          array[i] = add;
+          add = c;
+        }
         i++;
       }
       array[i] = add;
-      int j = i - 1;
-      char c;
-      while (j >= 0 && (c = array[j]) > add) {
-        array[j + 1] = c;
-        array[j] = add;
-        j--;
-      }
-      j = i + 1;
+      int j = i + 1;
       int lm1 = array.length;
       while (j < lm1 && (c = array[j]) < add) {
         array[j - 1] = c;
         array[j] = add;
         j++;
       }
-
     }
 
     public static  List<Integer> findAnagrams(String s, String p) {
