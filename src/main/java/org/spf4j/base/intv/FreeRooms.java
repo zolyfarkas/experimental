@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
- *
+ * https://leetcode.com/problems/meeting-rooms-ii/
  * @author Zoltan Farkas
  */
 public class FreeRooms {

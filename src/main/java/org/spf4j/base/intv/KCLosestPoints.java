@@ -16,7 +16,6 @@
 package org.spf4j.base.intv;
 
 import java.util.PriorityQueue;
-import java.util.TreeSet;
 
 /**
  * https://leetcode.com/problems/k-closest-points-to-origin/

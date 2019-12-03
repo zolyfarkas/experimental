@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 /**
- *
+ * https://leetcode.com/problems/merge-k-sorted-lists/
  * @author Zoltan Farkas
  */
 public class Merges {

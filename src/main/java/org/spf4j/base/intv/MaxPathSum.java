@@ -16,7 +16,7 @@
 package org.spf4j.base.intv;
 
 /**
- *
+ * https://leetcode.com/problems/binary-tree-maximum-path-sum/
  * @author Zoltan Farkas
  */
 public class MaxPathSum {
