@@ -23,8 +23,8 @@ import java.util.function.Consumer;
  */
 public final class Combinatorics {
 
-  public static <T> void permuttions(T[] array, Consumer<T[]> result) {
-    permutations(array, array.length, result);
+  public static <T> void permutations(T[] array, Consumer<T[]> result) {
+    Combinatorics.permutations(array, array.length, result);
   }
 
   private static <T> void permutations(T[] array, int to, Consumer<T[]> result) {
@@ -33,11 +33,11 @@ public final class Combinatorics {
     } else {
       int lIdx = to - 1;
       T last = array[lIdx];
-      permutations(array, lIdx, result);
+      Combinatorics.permutations(array, lIdx, result);
       for (int i = 0; i < lIdx; i++) {
         array[lIdx] = array[i];
         array[i] = last;
-        permutations(array, lIdx, result);
+        Combinatorics.permutations(array, lIdx, result);
         array[i] = array[lIdx];
         array[lIdx] = last;
       }

@@ -8,6 +8,11 @@ import java.util.List;
 
 public class Scratch {
 
+  /**
+   * https://leetcode.com/problems/merge-intervals/
+   * @param intervals
+   * @return
+   */
   public int[][] merge(int[][] intervals) {
     if (intervals.length == 0) {
       return intervals;
@@ -36,8 +41,14 @@ public class Scratch {
     "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",
     "Twenty"};
 
-  private static final String[] tens = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+  private static final String[] tens = {"", "Ten", "Twenty", "Thirty", "Forty",
+    "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 
+  /**
+   * https://leetcode.com/problems/integer-to-english-words/
+   * @param num
+   * @return
+   */
   public static String numberToWords(int num) {
     StringBuilder sb = new StringBuilder(16);
     try {

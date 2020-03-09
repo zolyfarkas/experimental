@@ -42,7 +42,7 @@ import org.spf4j.base.MutableHolder;
 import org.spf4j.base.Pair;
 
 /**
- *
+ * A simple trie implementation.
  * @author Zoltan Farkas
  */
 public final class TrieMap<T> {
