@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 SPF4J.
+ * Copyright 2020 SPF4J.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,14 @@
 package org.spf4j.base.intv;
 
 import org.junit.Test;
-
 /**
  *
  * @author Zoltan Farkas
  */
-public class KCLosestPointsTest {
-
+public class MaxScoreSightSeeingTest {
 
   @Test
-  public void testSomeMethod() {
-    KCLosestPoints.kClosest(points, 0)
-
+  public void testMax() {
+   System.out.println(MaxScoreSightSeeing.maxScoreSightseeingPair(new int [] {8,1,5,2,6}));
   }
-
 }

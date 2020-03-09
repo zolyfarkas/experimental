@@ -35,7 +35,7 @@ public class CombinatoricsTest {
   @Test
   public void testPermutations() {
     Set<List<Integer>> res = new HashSet<>(30);
-    Combinatorics.permuttions(new Integer[] {1, 2, 3, 4}, (a) -> {
+    Combinatorics.permutations(new Integer[] {1, 2, 3, 4}, (a) -> {
       LOG.debug("{}", (Object) a);
       if (!res.add(Arrays.asList(a.clone()))) {
         throw new AssertionError();
