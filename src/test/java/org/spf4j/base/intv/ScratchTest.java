@@ -29,7 +29,7 @@ public class ScratchTest {
   @Test
   public void testNumberToWord() {
     System.out.println(
-            Scratch.numberToWords(2067452370));
+            IntegerToEnglish.numberToWords(2067452370));
   }
 
 
