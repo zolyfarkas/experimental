@@ -1,6 +1,9 @@
 package org.spf4j.base.intv;
 
-
+/**
+ * https://leetcode.com/problems/lru-cache/
+ * @author Zoltan Farkas
+ */
 public class LRUCache {
 
     private static class Node {

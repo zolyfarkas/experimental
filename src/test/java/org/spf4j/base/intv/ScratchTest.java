@@ -32,6 +32,4 @@ public class ScratchTest {
             IntegerToEnglish.numberToWords(2067452370));
   }
 
-
-
 }
