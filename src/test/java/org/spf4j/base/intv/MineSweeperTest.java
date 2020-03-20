@@ -51,7 +51,7 @@ public class MineSweeperTest {
   }
 
   public void pokeBoard(MineSweeper.Board board) {
-    board.pokeAll(new MineSweeper.Board.DetectorReadingConsumer() {
+    board.pokeAll(new MineSweeper.Board.ScanConsumer() {
       @Override
       public void accept(int reading) {
         if (reading < 0) {
