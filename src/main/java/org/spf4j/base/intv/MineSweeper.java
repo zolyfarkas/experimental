@@ -32,7 +32,7 @@ public class MineSweeper {
 
     public Board(int width, int height) {
       if (width <=0 || height <= 0) {
-        throw new IllegalArgumentException("Invalid w=" + width + ", h=" + height);
+        throw new IllegalArgumentException("Invalid minefield w=" + width + ", h=" + height);
       }
       matrix = new boolean[width][height];
       this.width = width;
