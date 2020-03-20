@@ -72,7 +72,7 @@ public class MineSweeper {
         int nrm = 0;
         for (int i = Math.max(x - 1, 0), xp1 = Math.min(x + 2, width); i < xp1; i++) {
           for (int j = Math.max(y - 1, 0), yp1 = Math.min(y + 2, height); j < yp1; j++) {
-            if ((i != x || j != y) && isMine(i, j)) {
+            if (isMine(i, j)) {
               nrm++;
             }
           }
