@@ -22,8 +22,9 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class MineSweeper {
 
-  public static class Board {
+  public static final class Board {
 
+    /** could be replaced by a set of points where the mines are to reduce mem footprint*/
     private final boolean [][] matrix;
     private final int width;
     private final int height;
@@ -59,24 +60,38 @@ public class MineSweeper {
     }
 
     /**
-     * Poke around in the mine field.
+     * Poke around in the mine field with a metal detector.
      * @param x coordinate
      * @param y coordinate
      * @return -1 if mine, number of adjacent mines otherwise.
      */
     public int poke(int x, int y) {
-      if (matrix[x][y]) {
+      if (isMine(x,y)) {
         return -1;
       } else {
         int nrm = 0;
         for (int i = Math.max(x - 1, 0), xp1 = Math.min(x + 2, width); i < xp1; i++) {
           for (int j = Math.max(y - 1, 0), yp1 = Math.min(y + 2, height); j < yp1; j++) {
             if ((i != x || j != y) && isMine(i, j)) {
-              nrm ++;
+              nrm++;
             }
           }
         }
         return nrm;
+      }
+    }
+
+    interface DetectorReadingConsumer {
+      void accept(int reading);
+      void endRow();
+    }
+
+    void pokeAll(DetectorReadingConsumer drc) {
+      for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+          drc.accept(poke(x, y));
+        }
+        drc.endRow();
       }
     }
 
@@ -117,9 +132,9 @@ public class MineSweeper {
     @Override
     public String toString() {
       StringBuilder result = new StringBuilder(height * (width + 1));
-      for (boolean[] row : matrix) {
-        for (boolean val : row) {
-          result.append(val ? '*' : 'O');
+      for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+          result.append(isMine(x, y) ? '*' : 'O');
         }
         result.append('\n');
       }
