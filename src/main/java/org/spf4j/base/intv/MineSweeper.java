@@ -65,8 +65,7 @@ public class MineSweeper {
      * @return -1 if mine, number of adjacent mines otherwise.
      */
     public int poke(int x, int y) {
-      boolean isMine = matrix[x][y];
-      if (isMine) {
+      if (matrix[x][y]) {
         return -1;
       } else {
         int nrm = 0;
