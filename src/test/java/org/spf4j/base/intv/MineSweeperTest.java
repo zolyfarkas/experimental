@@ -37,6 +37,8 @@ public class MineSweeperTest {
     testBoard(1, 10, 3);
     testBoard(10, 1, 3);
     testBoard(3, 4, 3);
+    testBoard(4, 3, 6);
+    testBoard(4, 3, 12);
   }
 
   public void testBoard(int w, int h, int nrm) {
@@ -44,22 +46,26 @@ public class MineSweeperTest {
       MineSweeper.Board board = MineSweeper.Board.newRandomBoard(w, h, nrm);
       System.out.println(board);
       Assert.assertEquals(nrm, board.getNrMines());
-      pokeBoard(w, h, board);
+      pokeBoard(board);
     }
   }
 
-  public void pokeBoard(int w, int h, MineSweeper.Board board) {
-    for (int x = 0; x < w; x++) {
-      for (int y =0; y < h; y++) {
-        int poke = board.poke(x, y);
-        if (poke < 0) {
+  public void pokeBoard(MineSweeper.Board board) {
+    board.pokeAll(new MineSweeper.Board.DetectorReadingConsumer() {
+      @Override
+      public void accept(int reading) {
+        if (reading < 0) {
           System.out.print('*');
         } else {
-          System.out.print(poke);
+          System.out.print(reading);
         }
       }
-      System.out.println();
-    }
+
+      @Override
+      public void endRow() {
+        System.out.println();
+      }
+    });
     System.out.println();
   }
 
