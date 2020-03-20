@@ -81,12 +81,12 @@ public class MineSweeper {
       }
     }
 
-    interface DetectorReadingConsumer {
+    interface ScanConsumer {
       void accept(int reading);
       void endRow();
     }
 
-    void pokeAll(DetectorReadingConsumer drc) {
+    void pokeAll(ScanConsumer drc) {
       for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
           drc.accept(poke(x, y));
