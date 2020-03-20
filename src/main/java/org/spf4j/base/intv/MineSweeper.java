@@ -23,40 +23,79 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MineSweeper {
 
   public static class Board {
-    int [][] matrix;
 
-    int nrMines;
-    int w;
-    int h;
+    private final boolean [][] matrix;
+    private final int width;
+    private final int height;
+    private int nrMines;
 
-    public Board(int w, int h) {
-      matrix = new int[w][h];
-      this.w = w;
-      this.h = h;
+    public Board(int width, int height) {
+      if (width <=0 || height <= 0) {
+        throw new IllegalArgumentException("Invalid w=" + width + ", h=" + height);
+      }
+      matrix = new boolean[width][height];
+      this.width = width;
+      this.height = height;
       this.nrMines = 0;
     }
 
     public boolean isMine(int x, int y) {
-      return matrix[x][y] == -1;
+      return matrix[x][y];
     }
 
-    public int setMine(int x, int y) {
-      int ex = matrix[x][y];
-      matrix[x][y] = -1;
-      if (ex >=0) {
+    /**
+     * Put a mine to a position.
+     * @param x
+     * @param y
+     * @return true if there was a mine already there
+     */
+    public boolean setMine(int x, int y) {
+      boolean ex = matrix[x][y];
+      if (!ex) {
+        matrix[x][y] = true;
         nrMines++;
       }
       return ex;
+    }
+
+    /**
+     * Poke around in the mine field.
+     * @param x coordinate
+     * @param y coordinate
+     * @return -1 if mine, number of adjacent mines otherwise.
+     */
+    public int poke(int x, int y) {
+      boolean isMine = matrix[x][y];
+      if (isMine) {
+        return -1;
+      } else {
+        int nrm = 0;
+        for (int i = Math.max(x - 1, 0), xp1 = Math.min(x + 2, width); i < xp1; i++) {
+          for (int j = Math.max(y - 1, 0), yp1 = Math.min(y + 2, height); j < yp1; j++) {
+            if ((i != x || j != y) && isMine(i, j)) {
+              nrm ++;
+            }
+          }
+        }
+        return nrm;
+      }
     }
 
     public int getNrMines() {
       return nrMines;
     }
 
-    public static Board newRandomBoard(int w, int h, int nrMines) {
-      Board board = new Board(w, h);
+    /**
+     * Create a random mine sweeper board.
+     * @param width
+     * @param height
+     * @param nrMines
+     * @return
+     */
+    public static Board newRandomBoard(int width, int height, int nrMines) {
+      Board board = new Board(width, height);
       ThreadLocalRandom rnd = ThreadLocalRandom.current();
-      int space = w * h;
+      int space = width * height;
       int[] arrMatrix = new int[space];
       for (int i = 0; i < space; i++) {
         arrMatrix[i] = i;
@@ -69,7 +108,7 @@ public class MineSweeper {
            arrMatrix[mPos] = tmp;
          }
         int minePosition = arrMatrix[i];
-        if (board.setMine(minePosition % w, minePosition / w) != 0) {
+        if (board.setMine(minePosition % width, minePosition / width)) {
           throw new IllegalStateException("Attempting to set a mine to same place: " + minePosition);
         }
       }
@@ -78,22 +117,15 @@ public class MineSweeper {
 
     @Override
     public String toString() {
-      StringBuilder result = new StringBuilder(h * (w + 1));
-      for (int[] row : matrix) {
-        for (int val : row) {
-          if (val < 0)  {
-            result.append('*');
-          } else {
-            result.append(val);
-          }
+      StringBuilder result = new StringBuilder(height * (width + 1));
+      for (boolean[] row : matrix) {
+        for (boolean val : row) {
+          result.append(val ? '*' : 'O');
         }
         result.append('\n');
       }
       return result.toString();
     }
-
-
-
   }
 
 
