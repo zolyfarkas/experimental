@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2020 SPF4J.
  *
@@ -16,6 +17,8 @@
 package org.spf4j.base.intv;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * https://leetcode.com/problems/longest-string-chain/
@@ -30,6 +33,12 @@ public class LongestStringChain {
     Arrays.sort(words, (a, b) -> Integer.compare(a.length(), b.length()));
     int[] linkUpTo = new int[words.length];
     Arrays.fill(linkUpTo, 1);
+    Map<Integer, Integer> length2Idx = new HashMap<>();
+    int k = 0;
+    for (String s : words) {
+      length2Idx.putIfAbsent(s.length(), k);
+      k++;
+    }
     int maxLength = 0;
     int i = 0;
     while (i < words.length) {
@@ -38,19 +47,22 @@ public class LongestStringChain {
       if (iLength > maxLength) {
         maxLength = iLength;
       }
-      int j = i + 1;
-      while (j < words.length) {
-        String w2 = words[j];
-        int diff = w2.length() - w1.length();
-        if (diff == 0) {
-          j++;
-        } else if (diff == 1) {
-          if (isChain1Diff(w1, w2)) {
-            linkUpTo[j] = Math.max(linkUpTo[j], iLength + 1);
+      Integer next1 = length2Idx.get(w1.length() + 1);
+      if (next1 != null) {
+        int j = next1;
+        while (j < words.length) {
+          String w2 = words[j];
+          int diff = w2.length() - w1.length();
+          if (diff == 0) {
+            throw new IllegalStateException();
+          } else if (diff == 1) {
+            if (isChain1Diff(w1, w2)) {
+              linkUpTo[j] = Math.max(linkUpTo[j], iLength + 1);
+            }
+            j++;
+          } else {
+            break;
           }
-          j++;
-        } else {
-          break;
         }
       }
       i++;
