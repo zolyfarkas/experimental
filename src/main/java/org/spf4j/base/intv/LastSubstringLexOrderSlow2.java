@@ -16,7 +16,6 @@
 package org.spf4j.base.intv;
 
 import java.math.BigInteger;
-import java.util.BitSet;
 
 /**
  *
