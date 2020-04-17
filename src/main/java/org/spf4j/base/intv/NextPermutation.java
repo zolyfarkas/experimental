@@ -32,7 +32,6 @@ public class NextPermutation {
                         m1 = j;
                         m2 = i;
                     }
-
                 }
             }
         }
