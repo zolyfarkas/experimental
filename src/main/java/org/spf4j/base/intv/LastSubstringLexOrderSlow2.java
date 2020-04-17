@@ -18,7 +18,6 @@ package org.spf4j.base.intv;
 import java.math.BigInteger;
 
 /**
- *
  * @author Zoltan Farkas
  */
 public class LastSubstringLexOrderSlow2 {
