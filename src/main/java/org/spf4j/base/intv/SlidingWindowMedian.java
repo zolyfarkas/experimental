@@ -18,7 +18,10 @@ package org.spf4j.base.intv;
 import java.util.PriorityQueue;
 
 /**
+ * https://leetcode.com/problems/sliding-window-median/submissions/
  *
+ * this one uses the MedianFinder based on 2 priority queues.
+ * however sorting the window and remove and inserting into it would work as well.
  * @author Zoltan Farkas
  */
 public class SlidingWindowMedian {
