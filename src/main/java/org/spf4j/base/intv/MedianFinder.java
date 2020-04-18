@@ -66,7 +66,7 @@ public class MedianFinder {
       int ls = lh.size();
       int hs = hh.size();
       if (ls == 0 && hs == 0) {
-        throw new IllegalStateException("No median forr empty bag");
+        throw new IllegalStateException("No median for empty bag");
       }
       if (ls == hs) {
         return ((double) (lh.peek() + hh.peek())) / 2.0;
