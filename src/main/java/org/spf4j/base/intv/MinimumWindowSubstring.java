@@ -22,7 +22,7 @@ import java.util.Map;
  * https://leetcode.com/problems/minimum-window-substring/
  * @author Zoltan Farkas
  */
-public class Mws {
+public class MinimumWindowSubstring {
 
   private static class Range {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 SPF4J.
+ * Copyright 2020 SPF4J.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,26 +22,12 @@ import org.junit.Test;
  *
  * @author Zoltan Farkas
  */
-public class MwsTest {
+public class LongestConsecutiveSequenceTest {
 
-
   @Test
-  public void testMinWindow() {
-    String minWindow = MinimumWindowSubstring.minWindow("ADOBECODEBANC", "ABC");
-    System.out.println(minWindow);
-    Assert.assertEquals("BANC", minWindow);
-  }
-  @Test
-  public void testMinWindow2() {
-    String minWindow = MinimumWindowSubstring.minWindow("a", "aa");
-    System.out.println(minWindow);
-    Assert.assertEquals("", minWindow);
-  }
-  @Test
-  public void testMinWindow3() {
-    String minWindow = MinimumWindowSubstring.minWindow("aa", "aa");
-    System.out.println(minWindow);
-    Assert.assertEquals("aa", minWindow);
+  public void testConsSeq() {
+    int seqS = LongestConsecutiveSequence.longestConsecutive(new int[] {100, 4, 200, 1, 3, 2});
+    Assert.assertEquals(4, seqS);
   }
 
 }

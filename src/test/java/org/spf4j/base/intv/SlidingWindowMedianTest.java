@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 SPF4J.
+ * Copyright 2020 SPF4J.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,26 +22,27 @@ import org.junit.Test;
  *
  * @author Zoltan Farkas
  */
-public class MwsTest {
+public class SlidingWindowMedianTest {
 
 
+
   @Test
-  public void testMinWindow() {
-    String minWindow = MinimumWindowSubstring.minWindow("ADOBECODEBANC", "ABC");
-    System.out.println(minWindow);
-    Assert.assertEquals("BANC", minWindow);
+  public void test1() {
+    double[] results = SlidingWindowMedian.medianSlidingWindow(new int [] {1,3,-1,-3,5,3,6,7}, 3);
+    Assert.assertArrayEquals(new double[] {1,-1,-1,3,5,6}, results, 0.0000001);
   }
+
   @Test
-  public void testMinWindow2() {
-    String minWindow = MinimumWindowSubstring.minWindow("a", "aa");
-    System.out.println(minWindow);
-    Assert.assertEquals("", minWindow);
+  public void test2() {
+    double[] results = SlidingWindowMedian.medianSlidingWindow(new int [] {2147483647,2147483647}, 2);
+    Assert.assertArrayEquals(new double[] {2147483647}, results, 0.0000001);
   }
+
   @Test
-  public void testMinWindow3() {
-    String minWindow = MinimumWindowSubstring.minWindow("aa", "aa");
-    System.out.println(minWindow);
-    Assert.assertEquals("aa", minWindow);
+  public void test3() {
+    double[] results = SlidingWindowMedian.medianSlidingWindow(new int [] {2147483647,1,2,3,4,5,6,7,2147483647}, 2);
   }
+
+
 
 }
