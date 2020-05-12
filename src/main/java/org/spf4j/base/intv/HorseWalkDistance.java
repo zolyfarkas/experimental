@@ -123,15 +123,10 @@ public class HorseWalkDistance {
       }
       traversed.add(at.position);
       Point[] next = getPointsToJumpTo(at.position);
-      int nrAdded = 0;
       for (Point p : next) {
         if (!traversed.contains(p) && isInDirection(at.position, targetPoint, p)) {
           traverse.addLast(new TraversalState(p, at.nrStepsFromStart + 1));
-          nrAdded++;
         }
-      }
-      if (nrAdded == 0) {
-        throw new IllegalStateException("No Point Added at " + at.position + ",  " + Arrays.toString(next));
       }
     }
   }
