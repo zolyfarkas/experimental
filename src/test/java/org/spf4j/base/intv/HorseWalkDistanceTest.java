@@ -28,6 +28,7 @@ public class HorseWalkDistanceTest {
   @Test
   public void testHorseWalk() {
     Assert.assertEquals(5, HorseWalkDistance.getSteps(4, 5, 1, 1));
+    Assert.assertEquals(2, HorseWalkDistance.getSteps(3, 5, 1, 1));
   }
 
 }
