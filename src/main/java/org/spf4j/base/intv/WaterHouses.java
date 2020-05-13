@@ -25,7 +25,14 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
+ *
+ * https://leetcode.com/problems/optimize-water-distribution-in-a-village/
+ *
+ * Implementation:
  * https://en.wikipedia.org/wiki/Reverse-delete_algorithm
+ *
+ *
+ *
  * @author Zoltan Farkas
  */
 public class WaterHouses {
@@ -43,7 +50,7 @@ public class WaterHouses {
 
     @Override
     public int hashCode() {
-      return (97 + this.from) * 97  + this.to;
+      return this.from + this.to * 597;
     }
 
     @Override
@@ -143,17 +150,19 @@ public class WaterHouses {
 
     ArrayDeque<Integer> toVisit = new ArrayDeque<>();
 
-    public boolean isConnected() {
+    public boolean isConnected(int startAt) {
       visited.clear();
-      toVisit.add(0);
+      toVisit.add(startAt);
+      visited.set(startAt);
       Integer at;
       while ((at = toVisit.pollLast()) != null) {
-       visited.set(at);
        for (Edge edge : node2Edges.get(at)) {
          if (!visited.get(edge.from)) {
            toVisit.add(edge.from);
+           visited.set(edge.from);
          } else if (!visited.get(edge.to)) {
            toVisit.add(edge.to);
+           visited.set(edge.to);
          }
        }
       }
@@ -161,7 +170,7 @@ public class WaterHouses {
     }
   }
 
-  public int minCostToSupplyWater(int n, int[] wells, int[][] pipes) {
+  public static int minCostToSupplyWater(int n, int[] wells, int[][] pipes) {
     WaterGraph graph = new WaterGraph(n);
     for (int i = 0; i <  wells.length; i++) {
       graph.addEdge(0, i + 1, wells[i]);
@@ -171,7 +180,7 @@ public class WaterHouses {
     }
     for (Edge edge : graph.getEdges()) {
       graph.remove(edge);
-      if (!graph.isConnected()) {
+      if (!graph.isConnected(edge.from)) {
         graph.add(edge);
       }
     }
