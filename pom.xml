@@ -25,7 +25,7 @@
   <parent>
     <groupId>org.spf4j</groupId>
     <artifactId>spf4j</artifactId>
-    <version>8.6.27-SNAPSHOT</version>
+    <version>8.8.6-SNAPSHOT</version>
   </parent>
   <name>${project.artifactId}</name>
     
@@ -92,7 +92,6 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
