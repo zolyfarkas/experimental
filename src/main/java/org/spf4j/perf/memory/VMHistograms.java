@@ -31,6 +31,10 @@
  */
 package org.spf4j.perf.memory;
 
+/*
+
+disabled until I know where to get the sun.jvm stuff in other JDKs
+
 import gnu.trove.map.TObjectIntMap;
 import gnu.trove.map.hash.TObjectIntHashMap;
 import sun.jvm.hotspot.HotSpotAgent;
@@ -40,11 +44,6 @@ import sun.jvm.hotspot.oops.Oop;
 import sun.jvm.hotspot.runtime.VM;
 
 
-
-/**
- *
- * @author zoly
- */
 public class VMHistograms {
 
     static {
@@ -68,3 +67,6 @@ public class VMHistograms {
     }
 
 }
+
+
+*/
